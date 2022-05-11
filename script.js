@@ -73,3 +73,25 @@ function findMedian(arr) {
 //console.log(findMedian([0,1,2,8,7,5,9,10,50,1000,2000,1003,5005]));
 
 
+function lonelyinteger(a) {
+    // Write your code here
+    function order ( a, b ){ return a - b; };
+    a.sort(order);
+    const pairs = [];
+    const lonely = [];
+    for(let i = 0; i<a.length; i++){
+        if(a[i]==a[i+1]){
+            pairs.push(a[i]);
+        }else{
+            lonely.push(a[i]);
+        }
+    }
+    for(i=0;i<lonely.length;i++){
+        if(pairs[i]!=lonely[i]){
+            return lonely[i];
+        }
+    }
+}
+
+
+console.log(lonelyinteger([1,2,3,4,4,3,2,1,8]));
