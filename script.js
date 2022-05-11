@@ -1,26 +1,3 @@
-
-function plusMinus(arr) {
-    // Write your code here
-    const arrLength = arr.length;
-    const positives = [];
-    const negatives = [];
-    const zeros = [];
-    const ratios = [];
-    for(num of arr){
-        if(num<0){
-            negatives.push(num);
-        }else if(num>0){
-            positives.push(num);
-        }else if(num==0){
-            zeros.push(num);
-        }
-    }
-    ratios.push((negatives.length/arrLength).toFixed(6),(positives.length/arrLength).toFixed(6),(zeros.length/arrLength).toFixed(6));
-    for(rat of ratios){
-        console.log(rat);
-    }
-}
-
 //plusMinus([-5,0,0,1,2,3]);
 
 
@@ -59,4 +36,40 @@ function timeConversion(s) {
     return s;
 }
 
-timeConversion("07:05:45PM");
+//timeConversion("07:05:45PM");
+
+function fizzBuzz(n) {
+    // Write your code here
+    let i;
+    for(let i=1; i<=n;i++){
+        if((i%3==0)&&(i%5==0)){
+            console.log("FizzBuzz");
+        }
+        else if(i%5==0){
+            console.log("Buzz")
+        }
+        else if(i%3==0){
+            console.log("Fizz")
+        }
+        else{
+            console.log(i);
+        }
+    }
+    return i;
+}
+
+//fizzBuzz(20);
+
+function findMedian(arr) {
+    // Write your code here
+    function order ( a, b ){ return a - b; };
+    arr.sort(order);
+    console.log(arr);
+    let median = (arr.length/2)-0.5;
+    let solution = arr.slice(median,median+1);
+    return solution;
+}
+
+//console.log(findMedian([0,1,2,8,7,5,9,10,50,1000,2000,1003,5005]));
+
+
