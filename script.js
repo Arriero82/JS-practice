@@ -221,3 +221,33 @@ function towerBreakers(n, m) {
 }
 
 //console.log(towerBreakers(3,7));
+
+
+function caesarCipher(s, k) {
+  // Write your code here
+  let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
+
+  const text = s.split('');
+  console.log(text);
+  const index = [];
+  const encripted = [];
+  for(let i=0; i<text.length; i++){
+    if(alphabet.indexOf(text[i])!=-1){
+      let letter = (alphabet.indexOf(text[i])+k);
+      index.push(letter);
+    }else{
+      index.push(text[i])
+    }
+  }
+  console.log(index);
+  for(i=0; i<index.length; i++){
+    encripted.push(alphabet[index[i]])
+  }
+  return encripted;
+}
+
+console.log(caesarCipher('middle-Outz',2));
+
+
+
+
