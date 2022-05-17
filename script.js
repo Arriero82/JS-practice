@@ -226,24 +226,41 @@ function towerBreakers(n, m) {
 function caesarCipher(s, k) {
   // Write your code here
   let alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"];
-
+  let alphabetUpper = alphabet.map((character =>character.toUpperCase()));
   const text = s.split('');
   console.log(text);
   const index = [];
   const encripted = [];
+  const remainder = k%(alphabet.length-1);
+  const letInteger = Math.floor(k/(alphabet.length-1));
+
   for(let i=0; i<text.length; i++){
-    if(alphabet.indexOf(text[i])!=-1){
-      let letter = (alphabet.indexOf(text[i])+k);
-      index.push(letter);
+    if((alphabet.indexOf(text[i]))!= -1){
+      let letter = (alphabet.indexOf(text[i]) + k);
+      if(letter>alphabet.length-1 && k < 25){
+        letter = letter - alphabet.length;
+        index.push(letter);
+      }else if(letter>alphabet.length-1 && k > 25){
+        letter = letter - letInteger*(alphabet.length-1) +remainder;
+        index.push(letter);
+      }
+      encripted.push(alphabet[letter]);
+    }else if((alphabet.indexOf((text[i]).toLowerCase()))!=-1){
+      let letterUp = (alphabetUpper.indexOf(text[i])+k);
+      if(letterUp>alphabet.length-1 && k<25){
+        letterUp = letterUp - alphabet.length;
+        index.push(letterUp);
+      }else if(letterUp>alphabet.length-1 && k>25){
+        letterUp = letterUp - letInteger*(alphabet.length-1) +remainder;
+        index.push(letterUp);
+      }
+      encripted.push(alphabetUpper[letterUp])
     }else{
-      index.push(text[i])
+      encripted.push(text[i]);
+
     }
   }
-  console.log(index);
-  for(i=0; i<index.length; i++){
-    encripted.push(alphabet[index[i]])
-  }
-  return encripted;
+  return encripted.join('');
 }
 
 console.log(caesarCipher('middle-Outz',2));
